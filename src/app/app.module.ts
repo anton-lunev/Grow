@@ -8,14 +8,16 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {environment} from '../environments/environment';
 
 import {AppComponent} from './app.component';
-import {TasksComponent} from './tasks/tasks.component';
-import { TaskComponent } from './tasks/task/task.component';
+// import {TasksComponent} from './tasks/tasks.component';
+// import { TaskComponent } from './tasks/task/task.component';
+import { MarkupComponent } from './markup/markup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksComponent,
-    TaskComponent
+    // TasksComponent,
+    // TaskComponent,
+    MarkupComponent
   ],
   imports: [
     BrowserModule,
