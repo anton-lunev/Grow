@@ -1,0 +1,32 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.grow-container {
+  display: grid;
+  grid-template-columns: 290px auto;
+  height: 100vh;
+
+  &__sidebar {
+
+  }
+  &__content {
+    display: grid;
+    grid-template-columns: 395px auto;
+  }
+}
+
+.task-list {
+  background: #fafbfd;
+}
+
+.logo {
+
+  &__text {
+
+  }
+  &__icon {
+
+  }
+}

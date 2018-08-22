@@ -29,6 +29,7 @@ html, body {
 }
 
 body {
+  color: var(--color-text);
   margin: 0;
   font-family: -apple-system,
   BlinkMacSystemFont,
@@ -40,6 +41,14 @@ body {
   'Apple Color Emoji',
   'Segoe UI Emoji',
   'Segoe UI Symbol';
+}
+
+:root {
+  --color-text: #596073;
+  --color-text-light: #99a0a8;
+  --color-text-dark: #303e41;
+  --color-border: #eaeaea;
+  --color-blue: #5e84ff;
 }
 
 code,
