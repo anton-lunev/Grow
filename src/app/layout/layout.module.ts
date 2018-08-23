@@ -2,6 +2,7 @@ import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {LayoutComponent} from './layout.component';
 import {SidebarComponent} from './sidebar/sidebar.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {SidebarComponent} from './sidebar/sidebar.component';
   ],
   declarations: [
     LayoutComponent,
-    SidebarComponent
+    SidebarComponent,
+    TaskListComponent
   ],
   exports: [
     LayoutComponent

@@ -1,0 +1,25 @@
+:host {
+  background: #fafbfd;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  padding: 25px 35px;
+  margin-bottom: 35px;
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  padding: 12px 14px;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 10px 57px -10px rgba(155, 155, 155, 0.22);
+}
+
+.list-tabs {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
