@@ -1,12 +1,19 @@
 :host {
   background: #fafbfd;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  /* without z-index scrollbar is behind list-tabs */
+  z-index: 0;
 }
 
 .search {
   display: flex;
   justify-content: center;
   padding: 25px 35px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .search-input {
@@ -21,5 +28,82 @@
 .list-tabs {
   display: flex;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 50px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  background: #fafbfd;
+}
+
+.tab {
+  display: flex;
+  position: relative;
+  height: 55px;
+  cursor: pointer;
+
+  &__label {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+
+  &--active, &:hover, &:focus {
+    opacity: 1;
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    height: 3px;
+    width: 0;
+    background: var(--color-blue);
+    will-change: width, left;
+    transition: width .4s;
+  }
+  &:hover:after, &:focus:after {
+    left: 0;
+  }
+  &--active:after, &:focus:after, &:hover:after {
+    width: 100%;
+  }
+}
+
+.goals {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__item {
+    margin-bottom: 40px;
+  }
+}
+.goal {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-auto-flow: row;
+  background: #fff;
+  padding-bottom: 10px;
+  box-shadow: 0 15px 50px 0 #e6e6e6;
+  border-radius: 3px;
+
+  &__image {
+    margin: -10px 0 0 -10px;
+    width: 105px;
+  }
+  &__content {
+    padding: 15px;
+  }
+  &__title {
+    margin-bottom: 10px;
+  }
+  &__description {
+    font-size: 14px;
+    color: var(--color-text-light);
+  }
 }

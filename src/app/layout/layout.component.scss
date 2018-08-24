@@ -6,7 +6,9 @@
 .grow-container {
   display: grid;
   grid-template-columns: 290px auto;
+  grid-template-rows: 100%;
   height: 100vh;
+  overflow: hidden;
 
   &__sidebar {
 
