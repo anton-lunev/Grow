@@ -1,0 +1,13 @@
+<div class="goal-content__actions">
+
+</div>
+<h1 class="goal-content__title">{{goal.title}}</h1>
+<p class="goal-content__description">{{goal.description}}</p>
+
+<div class="goal-content__tasks tasks">
+  <div class="tasks__item task" *ngFor="let task of goal.tasks">
+    {{task.title}}
+  </div>
+</div>
+
+<div class="goal-content__notes"></div>

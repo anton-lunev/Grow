@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-// TODO rename it to GoalsListComponent
 @Component({
-  selector: 'grow-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.scss']
+  selector: 'grow-goals-list',
+  templateUrl: './goals-list.component.html',
+  styleUrls: ['./goals-list.component.scss']
 })
-export class TaskListComponent implements OnInit {
+export class GoalsListComponent implements OnInit {
   goals = [
     {
       title: 'Listen book "Talk to crazy"',
