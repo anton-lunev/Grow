@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 450px;
+}
+
+.auth {
+  &__google {
+    margin-right: 10px;
+    width: 80px;
+    cursor: pointer;
+  }
+  &__title {
+    cursor: pointer;
+  }
+}

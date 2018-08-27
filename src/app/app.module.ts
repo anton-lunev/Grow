@@ -1,5 +1,5 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
@@ -8,6 +8,7 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {environment} from '../environments/environment';
 
 import {AppComponent} from './app.component';
+import {AuthModule} from './auth/auth.module';
 import {LayoutModule} from './layout/layout.module';
 
 @NgModule({
@@ -21,6 +22,7 @@ import {LayoutModule} from './layout/layout.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     LayoutModule,
+    AuthModule,
 
     EffectsModule.forRoot([/*PostEffects*/]),
 
