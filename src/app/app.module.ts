@@ -6,6 +6,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {environment} from '../environments/environment';
+import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
@@ -14,13 +15,12 @@ import {LayoutModule} from './layout/layout.module';
 @NgModule({
   declarations: [
     AppComponent,
-    // TasksComponent,
-    // TaskComponent,
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AppRoutingModule,
     LayoutModule,
     AuthModule,
 
