@@ -193,3 +193,7 @@ progress {
 summary {
   display: list-item;
 }
+
+router-outlet {
+  display: none;
+}

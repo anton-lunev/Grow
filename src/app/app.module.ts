@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
+import {GoalsModule} from './goals/goals.module';
 import {LayoutModule} from './layout/layout.module';
 
 @NgModule({
@@ -23,6 +24,7 @@ import {LayoutModule} from './layout/layout.module';
     AppRoutingModule,
     LayoutModule,
     AuthModule,
+    GoalsModule,
 
     EffectsModule.forRoot([/*PostEffects*/]),
 

@@ -1,17 +1,11 @@
 :host {
-  height: 100%;
-  width: 100%;
-}
-
-.grow-container {
   display: grid;
   grid-template-columns: 290px auto;
   grid-template-rows: 100%;
   height: 100vh;
   overflow: hidden;
+  width: 100%;
+}
 
-  &__content {
-    display: grid;
-    grid-template-columns: 395px auto;
-  }
+.grow-container {
 }
