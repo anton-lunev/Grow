@@ -2,25 +2,8 @@
   <input class="search-input" type="search" placeholder="search">
 </div>
 
-<div class="list-tabs">
-  <!--TODO make tabs focusable-->
-  <div class="tab tab--active">
-    <div class="tab__label">My Goals</div>
-  </div>
-  <div class="tab">
-    <div class="tab__label">In Progress</div>
-  </div>
-  <div class="tab">
-    <div class="tab__label">Done</div>
-  </div>
-</div>
+<grow-list-tabs class="list-tabs"></grow-list-tabs>
 
 <div class="goals">
-  <div class="goals__item goal" *ngFor="let goal of goals">
-    <img class="goal__image" src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"/>
-    <div class="goal__content">
-      <div class="goal__title">{{goal.title}}</div>
-      <div class="goal__description">{{goal.description}}</div>
-    </div>
-  </div>
+  <grow-goal-item class="goals__item" *ngFor="let goal of goals" [goal]="goal"></grow-goal-item>
 </div>
