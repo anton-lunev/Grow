@@ -3,33 +3,12 @@
   <img class="logo__icon" src="/assets/mission.svg" alt="grow logo">
 </div>
 
-<div class="sidebar__user-info user-info">
-  <img class="user-info__img" src="https://randomuser.me/api/portraits/men/35.jpg" alt="User">
-  <div class="user-info__name">Ben Patrick</div>
-  <div class="user-info__status">Cool</div>
-</div>
-<!-- TODO Experience will be like this https://smartprogress.do/uploadImages/001216630.jpg -->
-<div class="sidebar__statistics sidebar-statistics">
-  <div class="sidebar-statistics__progress-bar progress-bar">
-    <div class="progress-bar__label">12/34</div>
-    <div class="progress-bar__container">
-      <div class="progress-bar__line" [style.width]="'60%'"></div>
-    </div>
-  </div>
-  <div class="sidebar-statistics__info" *ngFor="let item of statistics">
-    <div class="sidebar-statistics__info-number">{{item.quantity}}</div>
-    <div class="sidebar-statistics__info-text">{{item.name}}</div>
-    <div class="sidebar-statistics__info-small">{{item.entity}}</div>
-  </div>
-</div>
+<grow-user-info class="sidebar__user-info"></grow-user-info>
+
+<grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics>
 
 <div class="sidebar__add-task">
   <button class="grow-button">Add Task</button>
 </div>
 
-<nav class="sidebar__nav side-nav">
-  <a href="#" class="side-nav__item">Profile</a>
-  <a href="#" class="side-nav__item">Tasks</a>
-  <a href="#" class="side-nav__item">Shared Items</a>
-  <a href="#" class="side-nav__item">Calendar</a>
-</nav>
+<grow-side-nav class="sidebar__nav"></grow-side-nav>

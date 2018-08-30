@@ -42,85 +42,6 @@
   }
 }
 
-.user-info {
-  padding: 14px 14px 5px;
-  text-align: center;
-
-  &__img {
-    height: 100px;
-    width: 100px;
-    border-radius: 50%;
-    margin: 0 auto 23px;
-    overflow: hidden;
-    box-shadow: 0 0 0 6px #ffffff, 0 0 0 7px var(--color-border);
-    img {
-      object-fit: cover;
-      width: 100%;
-    }
-  }
-
-  &__name {
-    margin-bottom: 10px;
-  }
-
-  &__status {
-    color: var(--color-text-light);
-    font-size: 0.8em;
-  }
-}
-
-.sidebar-statistics {
-  display: grid;
-  grid-template-rows: 40px auto;
-  grid-template-columns: repeat(3, 1fr);
-
-  &__progress-bar {
-    grid-column: 1/-1;
-  }
-  &__info {
-    text-align: center;
-    font-size: 13px;
-  }
-  &__info-number {
-    font-size: 19px;
-    font-weight: 600;
-    margin-bottom: 7px;
-    color: var(--color-text-dark);
-  }
-  &__info-text {
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  &__info-small {
-    font-size: 0.9em;
-    color: var(--color-text-light);
-
-  }
-}
-
-.progress-bar {
-  &__label {
-    font-size: 0.6em;
-    color: var(--color-text-light);
-    text-align: right;
-    margin-bottom: 4px;
-  }
-  &__container {
-    background-color: #e7e7ef;
-    border-radius: 8px;
-    height: 5px;
-    position: relative;
-    overflow: hidden;
-  }
-  &__line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    background-color: var(--color-blue);
-    border-radius: 8px;
-  }
-}
-
 .grow-button {
   padding: 13px;
   border-radius: 3px;
@@ -130,14 +51,4 @@
   color: #ffffff;
   border: none;
   box-shadow: 0 21px 35px -15px rgba(94, 132, 255, 0.6);
-}
-
-.side-nav {
-  &__item {
-    text-decoration: none;
-    color: var(--color-text);
-    font-size: 15px;
-    padding: 15px 0;
-    display: block;
-  }
 }
