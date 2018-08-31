@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'grow-list-tabs',
@@ -8,7 +8,8 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 })
 export class ListTabsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

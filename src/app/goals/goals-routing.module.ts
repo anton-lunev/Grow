@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {GoalContentComponent} from './goal-content/goal-content.component';
-import {GoalsComponent} from './goals.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { GoalContentComponent } from './goal-content/goal-content.component';
+import { GoalsComponent } from './goals.component';
 
 const routes: Routes = [
   {

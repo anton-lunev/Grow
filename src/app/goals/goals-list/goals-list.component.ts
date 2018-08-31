@@ -23,7 +23,9 @@ export class GoalsListComponent implements OnInit {
       image: ''
     }
   ];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

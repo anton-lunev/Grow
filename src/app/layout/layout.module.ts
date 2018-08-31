@@ -1,9 +1,9 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {SidebarComponent} from './sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { SideNavComponent } from './sidebar/side-nav/side-nav.component';
-import { UserInfoComponent } from './sidebar/user-info/user-info.component';
 import { SideStatisticsComponent } from './sidebar/side-statistics/side-statistics.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { UserInfoComponent } from './sidebar/user-info/user-info.component';
 
 @NgModule({
   imports: [CommonModule],
