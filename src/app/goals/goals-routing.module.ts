@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: 'goals', component: GoalsComponent,
     children: [
-      {path: ':id', component: GoalContentComponent}
+      {path: ':goalId', component: GoalContentComponent}
     ]
   },
 ];
