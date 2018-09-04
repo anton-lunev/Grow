@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'grow-goals-list',
@@ -35,7 +35,16 @@ export class GoalsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.firstChild.paramMap.subscribe(params => this.selectedGoal = +params.get('goalId'));
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.selectedGoal = +this.route.firstChild.snapshot.params.goalId;
+      }
+    });
+    this.updateSelectedGoal();
+  }
+
+  updateSelectedGoal() {
+    this.selectedGoal = +this.route.firstChild.snapshot.params.goalId;
   }
 
   isGoalSelected(goalId: number): boolean {
