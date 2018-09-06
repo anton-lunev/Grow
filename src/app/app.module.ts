@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { GoalsModule } from './goals/goals.module';
 import { LayoutModule } from './layout/layout.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { LayoutModule } from './layout/layout.module';
       // post: postReducer
     }),
 
-    StoreDevtoolsModule.instrument({maxAge: 25})
+    StoreDevtoolsModule.instrument({maxAge: 25}),
+
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

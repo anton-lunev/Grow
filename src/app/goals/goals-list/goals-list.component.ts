@@ -37,14 +37,14 @@ export class GoalsListComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.selectedGoal = +this.route.firstChild.snapshot.params.goalId;
+        this.updateSelectedGoal();
       }
     });
     this.updateSelectedGoal();
   }
 
   updateSelectedGoal() {
-    this.selectedGoal = +this.route.firstChild.snapshot.params.goalId;
+    this.selectedGoal = this.route.firstChild ? +this.route.firstChild.snapshot.params.goalId : null;
   }
 
   isGoalSelected(goalId: number): boolean {
