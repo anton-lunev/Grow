@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { environment } from '../environments/environment';
@@ -10,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
 import { GoalsModule } from './goals/goals.module';
 import { LayoutModule } from './layout/layout.module';
 import { ProfileModule } from './profile/profile.module';
@@ -26,16 +25,9 @@ import { ProfileModule } from './profile/profile.module';
     LayoutModule,
     AuthModule,
     GoalsModule,
-
-    EffectsModule.forRoot([/*PostEffects*/]),
-
-    StoreModule.forRoot({
-      // post: postReducer
-    }),
-
-    StoreDevtoolsModule.instrument({maxAge: 25}),
-
-    ProfileModule
+    ProfileModule,
+    StoreModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
