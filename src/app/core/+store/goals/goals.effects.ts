@@ -1,44 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
+import { mapCollectionIds } from '../../../shared/helpers/map-collection-ids';
 import { Goal } from './goal.model';
 import * as GoalsActions from './goals.actions';
 
 
 @Injectable()
 export class GoalsEffects {
-  private static goalsMock = [
-    {
-      id: 0,
-      title: 'Listen book "Talk to crazy"',
-      description: 'Great book that makes some suggestions how to talk with psychopaths',
-      image: ''
-    },
-    {
-      id: 1,
-      title: 'Finish MVP of this app',
-      description: 'Minimal viable product is a product with just enough features to satisfy early customers',
-      image: ''
-    },
-    {
-      id: 2,
-      title: 'Learn Ngrx',
-      description: 'Watch Angular Ngrx course and apply knowledge to this app',
-      image: ''
-    }
-  ];
+  constructor(private actions$: Actions, private db: AngularFirestore) {}
+
   @Effect()
   getGoals$: Observable<Action> = this.actions$.pipe(
     ofType(GoalsActions.GoalsActionTypes.GET_GOALS),
     switchMap(() =>
-      of(GoalsEffects.goalsMock).pipe(
+      this.db.collection('goals').snapshotChanges().pipe(
+        map(mapCollectionIds),
         map((goals: Goal[]) => new GoalsActions.GetGoalsSuccess(goals)),
         catchError(error => of(new GoalsActions.GetGoalsError(error)))
       )
     )
   );
-
-  constructor(private actions$: Actions) {}
 }

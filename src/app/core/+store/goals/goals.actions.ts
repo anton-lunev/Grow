@@ -14,13 +14,11 @@ export class GetGoals implements Action {
 
 export class GetGoalsSuccess implements Action {
   readonly type = GoalsActionTypes.GET_GOALS_SUCCESS;
-
   constructor(public payload: Goal[]) {}
 }
 
 export class GetGoalsError implements Action {
   readonly type = GoalsActionTypes.GET_GOALS_ERROR;
-
   constructor(public payload: Error | string) {}
 }
 

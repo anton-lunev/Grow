@@ -1,11 +1,7 @@
 import { GoalsActions, GoalsActionTypes } from './goals.actions';
 import { goalsAdapter, GoalsState, initialGoalsState } from './goals.state';
 
-export function goalsReducer(
-  state = initialGoalsState,
-  action: GoalsActions
-): GoalsState {
-
+export function goalsReducer(state = initialGoalsState, action: GoalsActions): GoalsState {
   switch (action.type) {
     case GoalsActionTypes.GET_GOALS: {
       return {...state, loading: true};
