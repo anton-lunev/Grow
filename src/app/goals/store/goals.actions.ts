@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Goal } from './goal.model';
+import { Goal } from '../models/goal.model';
 
 // [Goals]- namespace
 export enum GoalsActionTypes {

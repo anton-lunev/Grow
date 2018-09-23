@@ -4,8 +4,8 @@ import { Action } from '@ngrx/store';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { mapCollectionIds } from '../../../shared/helpers/map-collection-ids';
-import { Goal } from './goal.model';
+import { mapCollectionIds } from '../../shared/helpers/map-collection-ids';
+import { Goal } from '../models/goal.model';
 import * as GoalsActions from './goals.actions';
 
 

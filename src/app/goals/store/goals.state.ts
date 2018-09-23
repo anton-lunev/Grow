@@ -1,5 +1,10 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Goal } from './goal.model';
+import { AppState } from '../../core/+store/app.state';
+import { Goal } from '../models/goal.model';
+
+export interface GoalsFeatureState extends AppState {
+  goals: GoalsState;
+}
 
 export interface GoalsState extends EntityState<Goal> {
   readonly loading: boolean;

@@ -1,5 +1,5 @@
-import { GoalsState } from './goals/goals.state';
+import { RouterReducerState } from '@ngrx/router-store';
 
 export interface AppState {
-  goals: GoalsState;
+  router: RouterReducerState;
 }
