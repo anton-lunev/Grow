@@ -24,10 +24,8 @@ export class GoalContentComponent implements OnInit {
     ],
   };
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

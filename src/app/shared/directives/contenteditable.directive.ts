@@ -16,8 +16,7 @@ export class ContenteditableDirective implements ControlValueAccessor {
   private onTouched: () => void;
   private removeDisabledState: () => void;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-  }
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('input')
   callOnChange() {

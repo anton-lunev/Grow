@@ -10,9 +10,7 @@ export class GoalItemComponent implements OnInit {
   @Input() goal: { id: number, title: string, description: string, image: string };
   @Input() selected: boolean;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

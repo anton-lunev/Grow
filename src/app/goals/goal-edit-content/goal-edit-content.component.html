@@ -7,11 +7,11 @@
     </h2>
   </div>
 
-  <div class="goal-content__title input" contenteditable="true" name="goalTitle" [(ngModel)]="goal.title"
+  <div [(ngModel)]="goal.title" class="goal-content__title input" contenteditable="true" name="goalTitle"
        placeholder="Goal title">
   </div>
 
-  <div class="goal-content__description description input" contenteditable="true" name="goalDescription"
-       [(ngModel)]="goal.description" placeholder="description">
+  <div [(ngModel)]="goal.description" class="goal-content__description description input" contenteditable="true"
+    name="goalDescription" placeholder="description">
   </div>
 </form>

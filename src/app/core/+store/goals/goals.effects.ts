@@ -29,10 +29,6 @@ export class GoalsEffects {
       image: ''
     }
   ];
-
-  constructor(private actions$: Actions) {
-  }
-
   @Effect()
   getGoals$: Observable<Action> = this.actions$.pipe(
     ofType(GoalsActions.GoalsActionTypes.GET_GOALS),
@@ -43,4 +39,6 @@ export class GoalsEffects {
       )
     )
   );
+
+  constructor(private actions$: Actions) {}
 }

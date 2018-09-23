@@ -8,10 +8,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ListTabsComponent implements OnInit {
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

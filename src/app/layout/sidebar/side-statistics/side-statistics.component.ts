@@ -8,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SideStatisticsComponent implements OnInit {
   @Input() statistics: { name: string, entity: string, quantity: number };
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

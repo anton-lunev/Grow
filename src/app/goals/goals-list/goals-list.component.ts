@@ -39,8 +39,7 @@ export class GoalsListComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private store: Store<AppState>) {
-  }
+              private store: Store<AppState>) {}
 
   ngOnInit() {
     this.goals$ = this.store.pipe(select(getGoalsData));
