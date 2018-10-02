@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { AppState } from '../../core/+store/app.state';
 import { Goal } from '../models/goal.model';
 
-export interface GoalsFeatureState extends AppState {
+export interface CoursesModuleState extends AppState {
   goals: GoalsState;
 }
 
