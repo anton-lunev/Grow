@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../../core/+store/app.state';
-import { Goal } from '../models/goal.model';
-import * as GoalsActions from '../store/goals.actions';
-import { getAllGoals } from '../store/goals.selectors';
+import { Goal } from '../state/goal.model';
+import { GoalsQuery } from '../state/goals.query';
+import { GoalsService } from '../state/goals.service';
 
 @Component({
   selector: 'grow-goals-list',
@@ -15,15 +13,16 @@ import { getAllGoals } from '../store/goals.selectors';
 export class GoalsListComponent implements OnInit {
   goals$: Observable<Goal[]>;
 
-  selectedGoal: number;
+  selectedGoal: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private store: Store<AppState>) {}
+              private goalsService: GoalsService,
+              private goalsQuery: GoalsQuery) {}
 
   ngOnInit() {
-    this.goals$ = this.store.pipe(select(getAllGoals));
-    this.store.dispatch(new GoalsActions.GetGoals());
+    this.goalsService.getGoals();
+    this.goals$ = this.goalsQuery.selectAll();
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -34,10 +33,10 @@ export class GoalsListComponent implements OnInit {
   }
 
   updateSelectedGoal() {
-    this.selectedGoal = this.route.firstChild ? +this.route.firstChild.snapshot.params.goalId : null;
+    this.selectedGoal = this.route.firstChild ? this.route.firstChild.snapshot.params.goalId : null;
   }
 
-  isGoalSelected(goalId: number): boolean {
+  isGoalSelected(goalId: string): boolean {
     return this.selectedGoal === goalId;
   }
 }
