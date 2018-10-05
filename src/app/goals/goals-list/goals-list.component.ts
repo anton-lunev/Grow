@@ -12,7 +12,7 @@ import { GoalsService } from '../state/goals.service';
 })
 export class GoalsListComponent implements OnInit {
   goals$: Observable<Goal[]>;
-  loading$: Observable<any>;
+  loading$: Observable<boolean>;
 
   selectedGoal: string;
 
@@ -24,6 +24,7 @@ export class GoalsListComponent implements OnInit {
   ngOnInit() {
     this.goalsService.getGoals();
     this.goals$ = this.goalsQuery.selectAll();
+    this.loading$ = this.goalsQuery.selectLoading();
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -31,7 +32,6 @@ export class GoalsListComponent implements OnInit {
       }
     });
     this.updateSelectedGoal();
-    this.showLoadingState();
   }
 
   updateSelectedGoal() {
@@ -40,12 +40,5 @@ export class GoalsListComponent implements OnInit {
 
   isGoalSelected(goalId: string): boolean {
     return this.selectedGoal === goalId;
-  }
-
-  showLoadingState() {
-    this.loading$ = this.goalsQuery.selectLoading();
-    this.loading$.subscribe(data => {
-      console.log(data);
-    });
   }
 }
