@@ -7,17 +7,19 @@ import AuthProvider = firebase.auth.AuthProvider;
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
-
   constructor(
     private authStore: AuthStore,
     private afAuth: AngularFireAuth,
     private authQuery: AuthQuery
   ) {
     this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.authStore.login(user);
-      }
+      user ? this.authStore.login(user) : this.authStore.logout();
+      this.authStore.setLoading(false);
     });
+  }
+
+  getAuthState() {
+    return this.afAuth.authState;
   }
 
   getCurrentUser() {

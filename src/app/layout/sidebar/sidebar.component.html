@@ -5,9 +5,11 @@
   </div>
 </a>
 
-<grow-user-info class="sidebar__user-info"></grow-user-info>
+<grow-user-info class="sidebar__user-info" [isLoading]="isUserLoading$ | async"
+                [user]="currentUser$ | async"></grow-user-info>
 
-<grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics>
+<!-- TODO move progress to avatar -->
+<!--<grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics>-->
 
 <div class="sidebar__add-task">
   <button class="grow-button">Add Task</button>

@@ -1,44 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
-import { auth } from 'firebase';
-
-export interface User extends firebase.UserInfo {
-  apiKey: string;
-  appName: string;
-  authDomain: string;
-  createdAt: string;
-  emailVerified: boolean;
-  isAnonymous: boolean;
-  lastLoginAt: string;
-  providerData: (firebase.UserInfo | null)[];
-  stsTokenManager: {
-    accessToken: string
-    apiKey: string
-    expirationTime: number
-    refreshToken: string
-  };
-}
+import { User } from './auth.model';
 
 export interface AuthState {
   user: User | null;
+  loading: boolean;
 }
-
-export const initialState: AuthState = {
-  user: null
-};
 
 @Injectable({providedIn: 'root'})
 @StoreConfig({name: 'auth'})
 export class AuthStore extends Store<AuthState> {
+  private static userKey = 'user';
+  private static initialState: AuthState = {
+    user: JSON.parse(localStorage.getItem(AuthStore.userKey)) || null,
+    loading: true
+  };
+
   constructor() {
-    super(initialState);
+    super(AuthStore.initialState);
   }
 
   login(user: firebase.User) {
+    localStorage.setItem(AuthStore.userKey, JSON.stringify(user.toJSON()));
     this.update({user: user.toJSON() as User});
   }
 
   logout() {
-    this.update(initialState);
+    localStorage.removeItem(AuthStore.userKey);
+    this.update(AuthStore.initialState);
   }
 }
