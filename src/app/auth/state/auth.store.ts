@@ -2,14 +2,29 @@ import { Injectable } from '@angular/core';
 import { Store, StoreConfig } from '@datorama/akita';
 import { auth } from 'firebase';
 
-export type User = auth.AdditionalUserInfo;
+export interface User extends firebase.UserInfo {
+  apiKey: string;
+  appName: string;
+  authDomain: string;
+  createdAt: string;
+  emailVerified: boolean;
+  isAnonymous: boolean;
+  lastLoginAt: string;
+  providerData: (firebase.UserInfo | null)[];
+  stsTokenManager: {
+    accessToken: string
+    apiKey: string
+    expirationTime: number
+    refreshToken: string
+  };
+}
 
 export interface AuthState {
   user: User | null;
 }
 
 export const initialState: AuthState = {
-  user: JSON.parse(localStorage.getItem('user')) || null
+  user: null
 };
 
 @Injectable({providedIn: 'root'})
@@ -19,15 +34,11 @@ export class AuthStore extends Store<AuthState> {
     super(initialState);
   }
 
-  login(user: User) {
-    this.update({user: user});
-    /** In real life, you will abstract this to service. */
-    localStorage.setItem('user', JSON.stringify(user));
+  login(user: firebase.User) {
+    this.update({user: user.toJSON() as User});
   }
 
   logout() {
-    /** In real life, you will abstract this to service. */
-    localStorage.removeItem('user');
     this.update(initialState);
   }
 }
