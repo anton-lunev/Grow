@@ -11,7 +11,9 @@ export class AuthService {
     private authStore: AuthStore,
     private afAuth: AngularFireAuth,
     private authQuery: AuthQuery
-  ) {
+  ) {}
+
+  init() {
     this.afAuth.authState.subscribe(user => {
       user ? this.authStore.login(user) : this.authStore.logout();
       this.authStore.setLoading(false);
@@ -27,7 +29,7 @@ export class AuthService {
   }
 
   googleLogin() {
-    return this.socialSignIn(new auth.GoogleAuthProvider())
+    this.socialSignIn(new auth.GoogleAuthProvider())
       .then(userCredentials => this.authStore.login(userCredentials.user));
   }
 

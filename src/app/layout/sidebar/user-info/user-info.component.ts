@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { User } from '../../../auth/state/auth.model';
 
 @Component({
@@ -7,12 +7,36 @@ import { User } from '../../../auth/state/auth.model';
   styleUrls: ['./user-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserInfoComponent implements OnInit {
+export class UserInfoComponent implements OnChanges {
   @Input() isLoading: boolean;
   @Input() user: User;
+  @Output() signIn = new EventEmitter();
 
-  constructor() {}
+  authorized: boolean;
+  userIsLoading: boolean;
+  unauthorized: boolean;
 
-  ngOnInit() {}
+  ngOnChanges() {
+    this.resetState();
+    if (this.user) {
+      // User authorized and user data was found in localStorage.
+      this.authorized = true;
+    } else if (this.isLoading) {
+      // User data wasn't found in localStorage, so we don't know if he authorized on not, so we show loader.
+      this.userIsLoading = true;
+    } else {
+      // User unauthorized.
+      this.unauthorized = true;
+    }
+  }
 
+  private resetState() {
+    this.authorized = false;
+    this.userIsLoading = false;
+    this.unauthorized = false;
+  }
+
+  auth() {
+    this.signIn.emit();
+  }
 }

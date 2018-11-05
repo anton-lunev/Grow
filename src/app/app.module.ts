@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
+import { AuthService } from './auth/state/auth.service';
 import { GoalsModule } from './goals/goals.module';
 import { LayoutModule } from './layout/layout.module';
 import { ProfileModule } from './profile/profile.module';
@@ -30,7 +31,9 @@ import { ProfileModule } from './profile/profile.module';
     GoalsModule,
     ProfileModule,
   ],
-  providers: [],
+  providers: [
+    {provide: APP_INITIALIZER, useFactory: (as: AuthService) => () => as.init(), deps: [AuthService], multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

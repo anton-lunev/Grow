@@ -12,6 +12,7 @@
     margin: 0 auto 23px;
     overflow: hidden;
     box-shadow: 0 0 0 6px #ffffff, 0 0 0 7px var(--color-border);
+
     img {
       object-fit: cover;
       width: 100%;
@@ -28,3 +29,6 @@
   }
 }
 
+.user-auth {
+  color: var(--color-text);
+}

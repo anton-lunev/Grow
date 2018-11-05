@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { User } from '../../auth/state/auth.model';
 import { AuthQuery } from '../../auth/state/auth.query';
+import { AuthService } from '../../auth/state/auth.service';
 
 @Component({
   selector: 'grow-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
-  isUserLoading$: Observable<boolean>;
-  currentUser$: Observable<User>;
+export class SidebarComponent implements OnInit, OnDestroy {
+  isUserLoadingSub: Subscription;
+  currentUserSub: Subscription;
+  isUserLoading: boolean;
+  currentUser: User = this.authQuery.getCurrentUser();
 
   // statistics = [
   //   {
@@ -30,10 +33,22 @@ export class SidebarComponent implements OnInit {
   //   }
   // ];
 
-  constructor(private authQuery: AuthQuery) {}
+  constructor(private authQuery: AuthQuery, private authService: AuthService) {}
 
   ngOnInit() {
-    this.isUserLoading$ = this.authQuery.selectLoading();
-    this.currentUser$ = this.authQuery.currentUser$;
+    this.isUserLoadingSub = this.authQuery.selectLoading().subscribe(isUserLoading => {
+      this.isUserLoading = isUserLoading;
+      console.log(isUserLoading);
+    });
+    this.currentUserSub = this.authQuery.currentUser$.subscribe(user => this.currentUser = user);
+  }
+
+  ngOnDestroy() {
+    this.isUserLoadingSub.unsubscribe();
+    this.currentUserSub.unsubscribe();
+  }
+
+  signIn() {
+    this.authService.googleLogin();
   }
 }

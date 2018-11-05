@@ -1,7 +1,24 @@
-<nav class="side-nav">
+<nav class="side-nav show-up" *ngIf="!isLoading">
   <!-- TODO add items icons-->
   <a class="side-nav__item" routerLink="/profile">Profile</a>
   <a class="side-nav__item" routerLink="/goals">Goals</a>
   <a class="side-nav__item" href="#">Shared Items</a>
   <a class="side-nav__item" href="#">Calendar</a>
 </nav>
+
+<nav class="side-nav" *ngIf="isLoading">
+  <!-- TODO add items icons-->
+  <div class="side-nav__item">
+    <span class="shimmer shimmer--text">Lorem ipsum dolor.</span>
+  </div>
+  <div class="side-nav__item">
+    <span class="shimmer shimmer--text">Lorem ipsum dolor sit.</span>
+  </div>
+  <div class="side-nav__item">
+    <span class="shimmer shimmer--text">Lorem ipsum do.</span>
+  </div>
+  <div class="side-nav__item">
+    <span class="shimmer shimmer--text">Lorem ipsum dolor.</span>
+  </div>
+</nav>
+

@@ -183,9 +183,6 @@ progress {
   font: inherit; /* 2 */
 }
 
-/* Interactive
-   ========================================================================== */
-
 /*
  * Add the correct display in Chrome and Safari.
  */
@@ -196,4 +193,49 @@ summary {
 
 router-outlet {
   display: none;
+}
+
+.clean-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*
+ * UI Skeleton animation
+ */
+
+.shimmer {
+  background: #eef2f5 linear-gradient(to right, #eef2f5 0%, #f6fafd 20%, #eef2f5 40%, #eef2f5 100%);
+  background-size: 800px;
+  animation: shimmer 1.5s infinite ease-out forwards;
+  color: transparent;
+
+  &--text {
+    display: inline-block;
+    border-radius: 4px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -368px 0;
+  }
+  100% {
+    background-position: 368px 0;
+  }
+}
+
+.show-up {
+  opacity: 0;
+  animation: show-up .25s 1 forwards ease-out;
+}
+
+@keyframes show-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

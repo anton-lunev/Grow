@@ -5,14 +5,17 @@
   </div>
 </a>
 
-<grow-user-info class="sidebar__user-info" [isLoading]="isUserLoading$ | async"
-                [user]="currentUser$ | async"></grow-user-info>
+<grow-user-info class="sidebar__user-info"
+                [isLoading]="isUserLoading"
+                [user]="currentUser"
+                (signIn)="signIn()">
+</grow-user-info>
 
 <!-- TODO move progress to avatar -->
 <!--<grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics>-->
 
-<div class="sidebar__add-task">
+<div class="sidebar__add-task" *ngIf="currentUser">
   <button class="grow-button">Add Task</button>
 </div>
 
-<grow-side-nav class="sidebar__nav"></grow-side-nav>
+<grow-side-nav [isLoading]="isUserLoading && !currentUser" class="sidebar__nav"></grow-side-nav>
