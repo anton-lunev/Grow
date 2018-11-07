@@ -1,11 +1,9 @@
 <div class="sidebar-statistics__progress-bar progress-bar">
   <div class="progress-bar__label">12/34</div>
-  <div class="progress-bar__container">
-    <div [style.width]="'60%'" class="progress-bar__line"></div>
-  </div>
+  <div class="progress-bar__container"><div [style.width]="'60%'" class="progress-bar__line"></div></div>
 </div>
 <div class="sidebar-statistics__info" *ngFor="let item of statistics">
-  <div class="sidebar-statistics__info-number">{{item.quantity}}</div>
-  <div class="sidebar-statistics__info-text">{{item.name}}</div>
-  <div class="sidebar-statistics__info-small">{{item.entity}}</div>
+  <div class="sidebar-statistics__info-number">{{ item.quantity }}</div>
+  <div class="sidebar-statistics__info-text">{{ item.name }}</div>
+  <div class="sidebar-statistics__info-small">{{ item.entity }}</div>
 </div>

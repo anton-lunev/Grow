@@ -16,9 +16,7 @@ import { LayoutModule } from './layout/layout.module';
 import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     !environment.production ? [AkitaNgDevtools.forRoot(), AkitaNgRouterStoreModule.forRoot()] : [],
     BrowserModule,
@@ -29,12 +27,11 @@ import { ProfileModule } from './profile/profile.module';
     LayoutModule,
     AuthModule,
     GoalsModule,
-    ProfileModule,
+    ProfileModule
   ],
   providers: [
-    {provide: APP_INITIALIZER, useFactory: (as: AuthService) => () => as.init(), deps: [AuthService], multi: true}
+    { provide: APP_INITIALIZER, useFactory: (as: AuthService) => () => as.init(), deps: [AuthService], multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}

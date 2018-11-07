@@ -1,21 +1,16 @@
 <a class="link" routerLink="/">
   <div class="sidebar__logo logo">
     <div class="logo__text">Grow</div>
-    <img alt="grow logo" class="logo__icon" src="/assets/mission.svg">
+    <img alt="grow logo" class="logo__icon" src="/assets/mission.svg" />
   </div>
 </a>
 
-<grow-user-info class="sidebar__user-info"
-                [isLoading]="isUserLoading"
-                [user]="currentUser"
-                (signIn)="signIn()">
+<grow-user-info class="sidebar__user-info" [isLoading]="isUserLoading" [user]="currentUser" (signIn)="signIn()">
 </grow-user-info>
 
 <!-- TODO move progress to avatar -->
-<!--<grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics>-->
+<!-- <grow-side-statistics class="sidebar__statistics" [statistics]="statistics"></grow-side-statistics> -->
 
-<div class="sidebar__add-task" *ngIf="currentUser">
-  <button class="grow-button">Add Task</button>
-</div>
+<div class="sidebar__add-task" *ngIf="currentUser"><button class="grow-button">Add Task</button></div>
 
 <grow-side-nav [isLoading]="isUserLoading && !currentUser" class="sidebar__nav"></grow-side-nav>

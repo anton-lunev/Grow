@@ -8,9 +8,9 @@ export interface User extends firebase.UserInfo {
   lastLoginAt: string;
   providerData: (firebase.UserInfo | null)[];
   stsTokenManager: {
-    accessToken: string
-    apiKey: string
-    expirationTime: number
-    refreshToken: string
+    accessToken: string;
+    apiKey: string;
+    expirationTime: number;
+    refreshToken: string;
   };
 }

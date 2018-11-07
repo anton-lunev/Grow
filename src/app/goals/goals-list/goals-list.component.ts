@@ -16,10 +16,12 @@ export class GoalsListComponent implements OnInit {
 
   selectedGoal: string;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private goalsService: GoalsService,
-              private goalsQuery: GoalsQuery) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private goalsService: GoalsService,
+    private goalsQuery: GoalsQuery
+  ) {}
 
   ngOnInit() {
     this.goalsService.getGoals();

@@ -1,8 +1,11 @@
 <div [class.goal--active]="selected" class="goal">
-  <img class="goal__image"
-       src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"/>
+  <img
+    alt="Goal picture"
+    class="goal__image"
+    src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
+  />
   <div class="goal__content">
-    <div class="goal__title">{{goal.title}}</div>
-    <div class="goal__description">{{goal.description}}</div>
+    <div class="goal__title">{{ goal.title }}</div>
+    <div class="goal__description">{{ goal.description }}</div>
   </div>
 </div>

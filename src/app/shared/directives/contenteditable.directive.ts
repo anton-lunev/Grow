@@ -4,10 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 // TODO add placeholder support
 @Directive({
   selector: '[contenteditable]',
-  providers:
-    [
-      {provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ContenteditableDirective), multi: true}
-    ]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => ContenteditableDirective), multi: true }]
 })
 export class ContenteditableDirective implements ControlValueAccessor {
   @Input() propValueAccessor = 'textContent';
@@ -68,7 +65,11 @@ export class ContenteditableDirective implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean): void {
     if (isDisabled) {
       this.renderer.setAttribute(this.elementRef.nativeElement, 'disabled', 'true');
-      this.removeDisabledState = this.renderer.listen(this.elementRef.nativeElement, 'keydown', this.listenerDisabledState);
+      this.removeDisabledState = this.renderer.listen(
+        this.elementRef.nativeElement,
+        'keydown',
+        this.listenerDisabledState
+      );
     } else {
       if (this.removeDisabledState) {
         this.renderer.removeAttribute(this.elementRef.nativeElement, 'disabled');

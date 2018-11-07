@@ -8,9 +8,7 @@
   width: 860px;
   padding: 20px 50px;
   position: relative;
-}
 
-.goal-content {
   &__title {
     font-size: 40px;
     margin: 50px 0 40px 0;
@@ -45,9 +43,10 @@
 }
 
 .input {
-  transition: box-shadow .05s;
+  transition: box-shadow 0.05s;
   outline: none;
-  &:active, &:focus {
+  &:active,
+  &:focus {
     box-shadow: 0 0 0 10px #fff, 0 0 47px -3px #bbb;
   }
 }

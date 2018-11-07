@@ -7,9 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListTabsComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit() {}
-
 }

@@ -4,6 +4,7 @@
   flex-direction: column;
   overflow-y: auto;
   position: relative;
+
   /* without z-index scrollbar is behind list-tabs */
   z-index: 0;
 }

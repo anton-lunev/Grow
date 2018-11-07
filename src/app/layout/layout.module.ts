@@ -12,5 +12,4 @@ import { UserInfoComponent } from './sidebar/user-info/user-info.component';
   declarations: [SidebarComponent, SideNavComponent, UserInfoComponent, SideStatisticsComponent],
   exports: [SidebarComponent]
 })
-export class LayoutModule {
-}
+export class LayoutModule {}

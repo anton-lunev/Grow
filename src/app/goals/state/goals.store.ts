@@ -4,8 +4,8 @@ import { Goal } from './goal.model';
 
 export interface GoalsState extends EntityState<Goal> {}
 
-@Injectable({providedIn: 'root'})
-@StoreConfig({name: 'goals'})
+@Injectable({ providedIn: 'root' })
+@StoreConfig({ name: 'goals' })
 export class GoalsStore extends EntityStore<GoalsState, Goal> {
   constructor() {
     super();

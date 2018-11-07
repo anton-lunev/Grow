@@ -12,15 +12,7 @@
   padding-bottom: 10px;
   box-shadow: 0 15px 50px 0 #e6e6e6;
   border-radius: 3px;
-  transition: background .2s;
-
-  &--active {
-    background: #a49af8 linear-gradient(90deg, #6757d9 0%, #a49af8 100%);
-    color: #fff;
-  }
-  &--active &__description {
-    color: rgba(255, 255, 255, 0.8);
-  }
+  transition: background 0.2s;
 
   &__image {
     margin: -10px 0 0 -10px;
@@ -36,5 +28,12 @@
   &__description {
     font-size: 14px;
     color: var(--color-text-light);
+  }
+  &--active {
+    background: #a49af8 linear-gradient(90deg, #6757d9 0%, #a49af8 100%);
+    color: #fff;
+  }
+  &--active &__description {
+    color: rgba(255, 255, 255, 0.8);
   }
 }

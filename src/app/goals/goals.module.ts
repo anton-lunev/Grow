@@ -11,12 +11,7 @@ import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    SharedModule,
-    FormsModule,
-    GoalsRoutingModule,
-  ],
+  imports: [CommonModule, SharedModule, FormsModule, GoalsRoutingModule],
   declarations: [
     GoalsListComponent,
     GoalContentComponent,
@@ -24,7 +19,6 @@ import { GoalsComponent } from './goals.component';
     GoalItemComponent,
     ListTabsComponent,
     GoalEditContentComponent
-  ],
+  ]
 })
-export class GoalsModule {
-}
+export class GoalsModule {}

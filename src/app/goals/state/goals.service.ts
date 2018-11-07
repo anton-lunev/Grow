@@ -4,16 +4,17 @@ import { AuthService } from '../../auth/state/auth.service';
 import { Goal } from './goal.model';
 import { GoalsStore } from './goals.store';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class GoalsService {
   constructor(private afs: AngularFirestore, private goalsStore: GoalsStore, private authService: AuthService) {}
 
   private getMyGoalsCollection(): AngularFirestoreCollection<Goal> {
-    return this.afs.collection('goals', ref =>
-      ref.where('user', '==', this.authService.getCurrentUser().uid));
+    return this.afs.collection('goals', ref => ref.where('user', '==', this.authService.getCurrentUser().uid));
   }
 
   getGoals() {
-    this.getMyGoalsCollection().valueChanges().subscribe((goals: Goal[]) => this.goalsStore.set(goals));
+    this.getMyGoalsCollection()
+      .valueChanges()
+      .subscribe((goals: Goal[]) => this.goalsStore.set(goals));
   }
 }

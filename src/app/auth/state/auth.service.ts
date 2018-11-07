@@ -5,13 +5,9 @@ import { AuthQuery } from './auth.query';
 import { AuthStore } from './auth.store';
 import AuthProvider = firebase.auth.AuthProvider;
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(
-    private authStore: AuthStore,
-    private afAuth: AngularFireAuth,
-    private authQuery: AuthQuery
-  ) {}
+  constructor(private authStore: AuthStore, private afAuth: AngularFireAuth, private authQuery: AuthQuery) {}
 
   init() {
     this.afAuth.authState.subscribe(user => {
@@ -29,8 +25,9 @@ export class AuthService {
   }
 
   googleLogin() {
-    this.socialSignIn(new auth.GoogleAuthProvider())
-      .then(userCredentials => this.authStore.login(userCredentials.user));
+    this.socialSignIn(new auth.GoogleAuthProvider()).then(userCredentials =>
+      this.authStore.login(userCredentials.user)
+    );
   }
 
   private socialSignIn(provider: AuthProvider): Promise<auth.UserCredential> {

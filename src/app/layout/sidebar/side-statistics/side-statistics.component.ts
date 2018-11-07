@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./side-statistics.component.scss']
 })
 export class SideStatisticsComponent implements OnInit {
-  @Input() statistics: { name: string, entity: string, quantity: number };
+  @Input() statistics: { name: string; entity: string; quantity: number };
 
   constructor() {}
 

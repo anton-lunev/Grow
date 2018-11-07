@@ -7,8 +7,8 @@ export interface AuthState {
   loading: boolean;
 }
 
-@Injectable({providedIn: 'root'})
-@StoreConfig({name: 'auth'})
+@Injectable({ providedIn: 'root' })
+@StoreConfig({ name: 'auth' })
 export class AuthStore extends Store<AuthState> {
   private static userKey = 'user';
   private static initialState: AuthState = {
@@ -22,7 +22,7 @@ export class AuthStore extends Store<AuthState> {
 
   login(user: firebase.User) {
     localStorage.setItem(AuthStore.userKey, JSON.stringify(user.toJSON()));
-    this.update({user: user.toJSON() as User});
+    this.update({ user: user.toJSON() as User });
   }
 
   logout() {

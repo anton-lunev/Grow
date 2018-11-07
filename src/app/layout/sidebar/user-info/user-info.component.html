@@ -1,9 +1,9 @@
 <ng-container *ngIf="authorized">
   <div class="show-up">
     <!-- TODO Experience will be like this https://smartprogress.do/uploadImages/001216630.jpg -->
-    <img alt="User" class="user-info__img" [attr.src]="user.photoURL">
-    <div class="user-info__name">{{user.displayName}}</div>
-    <!--<div class="user-info__status">Cool</div>-->
+    <img alt="User" class="user-info__img" [attr.src]="user.photoURL" />
+    <div class="user-info__name">{{ user.displayName }}</div>
+    <!-- <div class="user-info__status">Cool</div> -->
   </div>
 </ng-container>
 
@@ -14,7 +14,7 @@
 
 <ng-container *ngIf="unauthorized">
   <button class="show-up clean-button user-auth" (click)="auth()">
-    <img alt="User" class="user-info__img" src="/assets/google.svg">
-    <div class="user-info__name">Sign in with Google</div>
+    <img alt="User" class="user-info__img" src="/assets/google.svg" />
+    <span class="user-info__name">Sign in with Google</span>
   </button>
 </ng-container>

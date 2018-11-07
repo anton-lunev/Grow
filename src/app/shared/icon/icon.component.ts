@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line

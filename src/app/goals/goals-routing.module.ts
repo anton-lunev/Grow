@@ -7,18 +7,19 @@ import { GoalsComponent } from './goals.component';
 
 const routes: Routes = [
   {
-    path: 'goals', component: GoalsComponent, canActivate: [AuthGuard],
+    path: 'goals',
+    component: GoalsComponent,
+    canActivate: [AuthGuard],
     children: [
-      {path: 'add', component: GoalEditContentComponent},
-      {path: ':goalId', component: GoalContentComponent},
-      {path: ':goalId/edit', component: GoalEditContentComponent}
+      { path: 'add', component: GoalEditContentComponent },
+      { path: ':goalId', component: GoalContentComponent },
+      { path: ':goalId/edit', component: GoalEditContentComponent }
     ]
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class GoalsRoutingModule {
-}
+export class GoalsRoutingModule {}

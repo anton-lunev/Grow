@@ -21,12 +21,14 @@
     margin-bottom: 5px;
   }
 
-  &--active, &:hover, &:focus {
+  &--active,
+  &:hover,
+  &:focus {
     opacity: 1;
   }
 
   &:after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     bottom: -1px;
@@ -35,12 +37,15 @@
     width: 0;
     background: var(--color-blue);
     will-change: width, left;
-    transition: width .4s;
+    transition: width 0.4s;
   }
-  &:hover:after, &:focus:after {
+  &:hover:after,
+  &:focus:after {
     left: 0;
   }
-  &--active:after, &:focus:after, &:hover:after {
+  &--active:after,
+  &:focus:after,
+  &:hover:after {
     width: 100%;
   }
 }

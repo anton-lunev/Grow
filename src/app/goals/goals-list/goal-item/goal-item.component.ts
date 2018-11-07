@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalItemComponent implements OnInit {
-  @Input() goal: { id: number, title: string, description: string, image: string };
+  @Input() goal: { id: number; title: string; description: string; image: string };
   @Input() selected: boolean;
 
   constructor() {}
