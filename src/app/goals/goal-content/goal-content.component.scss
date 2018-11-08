@@ -52,10 +52,7 @@
     text-decoration: none;
     transition: box-shadow 0.1s, opacity 0.2s;
     opacity: 0.5;
-
-    svg {
-      fill: rgba(0, 0, 0, 0.6);
-    }
+    color: rgba(0, 0, 0, 0.6);
 
     &:hover {
       box-shadow: 0 0 0 3px white, 0 0 0 4px rgba(0, 0, 0, 0.4);

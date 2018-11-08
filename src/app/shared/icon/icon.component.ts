@@ -3,6 +3,7 @@ import { Component, HostBinding, Input } from '@angular/core';
 @Component({
   // tslint:disable-next-line
   selector: 'svg[icon]',
+  styleUrls: ['./icon.component.scss'],
   template: `
     <svg:use [attr.xlink:href]="'/assets/icons/main.svg#' + icon"></svg:use>
   `
