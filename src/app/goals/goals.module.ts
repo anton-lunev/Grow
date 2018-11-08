@@ -9,6 +9,7 @@ import { GoalsListComponent } from './goals-list/goals-list.component';
 import { ListTabsComponent } from './goals-list/list-tabs/list-tabs.component';
 import { GoalsRoutingModule } from './goals-routing.module';
 import { GoalsComponent } from './goals.component';
+import { GoalItemShimmerComponent } from './goals-list/goal-item-shimmer/goal-item-shimmer.component';
 
 @NgModule({
   imports: [CommonModule, SharedModule, FormsModule, GoalsRoutingModule],
@@ -18,7 +19,8 @@ import { GoalsComponent } from './goals.component';
     GoalsComponent,
     GoalItemComponent,
     ListTabsComponent,
-    GoalEditContentComponent
+    GoalEditContentComponent,
+    GoalItemShimmerComponent
   ]
 })
 export class GoalsModule {}

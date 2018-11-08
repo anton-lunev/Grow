@@ -191,12 +191,12 @@ router-outlet {
 .shimmer {
   background: #eef2f5 linear-gradient(to right, #eef2f5 0%, #f6fafd 20%, #eef2f5 40%, #eef2f5 100%);
   background-size: 800px;
-  animation: shimmer 1.5s infinite ease-out forwards;
+  animation: shimmer 1.8s infinite ease-out forwards;
   color: transparent;
 
   &--text {
     display: inline-block;
-    border-radius: 4px;
+    border-radius: var(--shimmer-text-border-radius);
   }
 }
 
