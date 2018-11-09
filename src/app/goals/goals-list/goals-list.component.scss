@@ -1,9 +1,15 @@
 :host {
-  background: #fafbfd;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.goals-list {
+  background: var(--color-background-gray);
   overflow-y: auto;
   position: relative;
+  flex: 1;
 
   /* without z-index scrollbar is behind list-tabs */
   z-index: 0;
@@ -39,5 +45,16 @@
   align-items: center;
   &__item {
     margin-bottom: 40px;
+  }
+}
+
+.add-goal {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  &__button {
+    border: none;
+    background: var(--color-blue);
+    color: var(--color-white);
   }
 }

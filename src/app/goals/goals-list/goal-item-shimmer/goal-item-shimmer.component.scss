@@ -10,7 +10,7 @@
   display: grid;
   grid-template-columns: 100px auto;
   grid-auto-flow: row;
-  background-color: #fff;
+  background-color: var(--color-white);
   padding-bottom: 10px;
   border-radius: 3px;
 

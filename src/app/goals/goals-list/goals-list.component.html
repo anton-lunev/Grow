@@ -1,22 +1,27 @@
-<div class="search"><input class="search-input" placeholder="search" type="search" /></div>
+<div class="goals-list">
+  <div class="search"><input class="search-input" placeholder="search" type="search" /></div>
 
-<grow-list-tabs class="list-tabs"></grow-list-tabs>
+  <grow-list-tabs class="list-tabs"></grow-list-tabs>
 
-<div class="goals">
-  <div *ngIf="(loading$ | async); else: goals">
-    <grow-goal-item-shimmer class="goals__item" *ngFor="let goal of [1, 2, 3]"></grow-goal-item-shimmer>
+  <div class="goals">
+    <div *ngIf="(loading$ | async); else: goals">
+      <grow-goal-item-shimmer class="goals__item" *ngFor="let goal of [1, 2, 3]"></grow-goal-item-shimmer>
+    </div>
   </div>
+
+  <ng-template #goals>
+    <div class="show-up">
+      <grow-goal-item
+        class="goals__item show-up"
+        *ngFor="let goal of (goals$ | async)"
+        [goal]="goal"
+        [selected]="isGoalSelected(goal.id)"
+        routerLink="/goals/{{goal.id}}"
+      >
+      </grow-goal-item>
+    </div>
+  </ng-template>
 </div>
-
-<ng-template #goals>
-  <div class="show-up">
-    <grow-goal-item
-      class="goals__item show-up"
-      *ngFor="let goal of (goals$ | async)"
-      [goal]="goal"
-      [selected]="isGoalSelected(goal.id)"
-      routerLink="/goals/{{goal.id}}"
-    >
-    </grow-goal-item>
-  </div>
-</ng-template>
+<div class="add-goal">
+  <button class="add-goal__button"><svg icon="add-goal"></svg></button>
+</div>

@@ -47,7 +47,7 @@
   outline: none;
   &:active,
   &:focus {
-    box-shadow: 0 0 0 10px #fff, 0 0 47px -3px #bbb;
+    box-shadow: 0 0 0 10px var(--color-white), 0 0 47px -3px #bbb;
   }
 }
 
@@ -58,7 +58,7 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  background-color: #fff;
+  background-color: var(--color-white);
 
   &__add-title {
     display: flex;
