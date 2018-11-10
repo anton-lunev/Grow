@@ -38,7 +38,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.isUserLoadingSub = this.authQuery.selectLoading().subscribe(isUserLoading => {
       this.isUserLoading = isUserLoading;
-      console.log(isUserLoading);
     });
     this.currentUserSub = this.authQuery.currentUser$.subscribe(user => (this.currentUser = user));
   }

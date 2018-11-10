@@ -1,0 +1,15 @@
+<form class="add-goal" [class.add-goal--active]="isActive" (ngSubmit)="addNewGoal()">
+  <button *ngIf="!isActive" class="clean-button add-goal__button" (click)="showInput()">
+    <svg icon="add-goal"></svg>
+  </button>
+  <button *ngIf="isActive" class="clean-button add-goal__button"><svg icon="add-goal"></svg></button>
+  <!-- TODO add autofocus -->
+  <input
+    class="add-goal__input"
+    type="text"
+    placeholder="New Goal"
+    name="goalTitle"
+    [(ngModel)]="goalTitle"
+    (blur)="hideInput()"
+  />
+</form>

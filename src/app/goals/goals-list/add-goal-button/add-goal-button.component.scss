@@ -1,0 +1,43 @@
+:host {
+  width: calc(100% - 40px);
+  box-sizing: border-box;
+  margin: 0 20px;
+  position: relative;
+}
+.add-goal {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  display: flex;
+  box-shadow: 0 7px 26px -8px rgba(155, 155, 155, 1);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: all 0.2s;
+  background: var(--color-white);
+  width: 49px;
+
+  &:hover:not(&--active) {
+    transform: translateY(-1px);
+    box-shadow: 0 11px 28px -9px rgba(155, 155, 155, 0.8);
+  }
+  &--active {
+    width: 100%;
+    box-shadow: 0 10px 57px -10px rgba(155, 155, 155, 0.42);
+  }
+  &__input {
+    border: none;
+    margin-left: 10px;
+    outline: none;
+    flex: 1;
+    color: var(--color-text);
+  }
+  &__button {
+    background: var(--color-blue);
+    color: var(--color-white);
+    padding: 14px;
+    display: flex;
+    font-size: 21px;
+    border-radius: 50%;
+    outline: none;
+  }
+}

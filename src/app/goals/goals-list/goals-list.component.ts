@@ -43,4 +43,8 @@ export class GoalsListComponent implements OnInit {
   isGoalSelected(goalId: string): boolean {
     return this.selectedGoal === goalId;
   }
+
+  addGoal(goalTitle) {
+    this.goalsService.addGoal(goalTitle);
+  }
 }

@@ -22,6 +22,4 @@
     </div>
   </ng-template>
 </div>
-<div class="add-goal">
-  <button class="add-goal__button"><svg icon="add-goal"></svg></button>
-</div>
+<grow-add-goal-button class="add-goal" (addGoal)="addGoal($event)"></grow-add-goal-button>

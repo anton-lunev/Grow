@@ -17,4 +17,9 @@ export class GoalsService {
       .valueChanges()
       .subscribe((goals: Goal[]) => this.goalsStore.set(goals));
   }
+
+  addGoal(goalTitle) {
+    console.log(goalTitle);
+    // TODO implement creating goal.
+  }
 }
