@@ -28,25 +28,29 @@ export class GoalsListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.goalsService.getGoals();
     this.loading$ = this.goalsQuery.selectLoading();
-    this.newGoalsSub = this.goalsService.getNewGoal().subscribe(goal => this.selectGoal(goal.id));
+    this.newGoalsSub = this.goalsService.getNewGoal().subscribe(goal => this.navigateToSelectedGoal(goal.id));
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.updateSelectedGoal();
+        this.selectTheFirstGoal();
       }
     });
     this.updateSelectedGoal();
 
     this.goalsSub = this.goalsQuery.selectAll().subscribe(goals => {
       this.goals = goals;
-
-      if (!this.selectedGoal && goals) {
-        this.selectGoal(goals[0].id);
-      }
+      this.selectTheFirstGoal();
     });
   }
 
-  selectGoal(goalId) {
+  selectTheFirstGoal() {
+    if (!this.selectedGoal && this.goals && this.goals.length) {
+      this.navigateToSelectedGoal(this.goals[0].id);
+    }
+  }
+
+  navigateToSelectedGoal(goalId) {
     this.router.navigate(['/goals', goalId]);
   }
 
