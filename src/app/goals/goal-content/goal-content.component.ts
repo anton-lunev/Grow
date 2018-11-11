@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
+import { Goal } from '../state/goal.model';
+import { GoalsQuery } from '../state/goals.query';
+import { GoalsService } from '../state/goals.service';
 
 @Component({
   selector: 'grow-goal-content',
@@ -6,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goal-content.component.scss']
 })
 export class GoalContentComponent implements OnInit {
-  goal = {
+  /*goal = {
     title: 'Finish MVP of this app',
     description: `A minimum viable product has just those core features sufficient to deploy the product, and no more.
       Developers typically deploy the product to a subset of possible customers—such as early adopters thought to be more forgiving,
@@ -22,9 +27,14 @@ export class GoalContentComponent implements OnInit {
       { title: 'Setup ngrx', done: false },
       { title: 'Setup firebase', done: false }
     ]
-  };
+  };*/
+  goal: Goal;
 
-  constructor() {}
+  constructor(private goalsService: GoalsService, private goalsQuery: GoalsQuery, private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params
+      .pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId)))
+      .subscribe(goal => (this.goal = goal));
+  }
 }

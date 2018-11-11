@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Goal } from '../state/goal.model';
@@ -10,10 +10,11 @@ import { GoalsService } from '../state/goals.service';
   templateUrl: './goals-list.component.html',
   styleUrls: ['./goals-list.component.scss']
 })
-export class GoalsListComponent implements OnInit {
-  goals$: Observable<Goal[]>;
+export class GoalsListComponent implements OnInit, OnDestroy {
+  goals: Goal[];
   loading$: Observable<boolean>;
-  newGoals: Subscription;
+  newGoalsSub: Subscription;
+  goalsSub: Subscription;
 
   selectedGoal: string;
 
@@ -26,9 +27,8 @@ export class GoalsListComponent implements OnInit {
 
   ngOnInit() {
     this.goalsService.getGoals();
-    this.goals$ = this.goalsQuery.selectAll();
     this.loading$ = this.goalsQuery.selectLoading();
-    this.newGoals = this.goalsService.getNewGoal().subscribe(goal => this.router.navigate(['/goals', goal.id]));
+    this.newGoalsSub = this.goalsService.getNewGoal().subscribe(goal => this.selectGoal(goal.id));
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -36,6 +36,18 @@ export class GoalsListComponent implements OnInit {
       }
     });
     this.updateSelectedGoal();
+
+    this.goalsSub = this.goalsQuery.selectAll().subscribe(goals => {
+      this.goals = goals;
+
+      if (!this.selectedGoal && goals) {
+        this.selectGoal(goals[0].id);
+      }
+    });
+  }
+
+  selectGoal(goalId) {
+    this.router.navigate(['/goals', goalId]);
   }
 
   updateSelectedGoal() {
@@ -48,5 +60,10 @@ export class GoalsListComponent implements OnInit {
 
   addGoal(goalTitle) {
     this.goalsService.addGoal(goalTitle);
+  }
+
+  ngOnDestroy() {
+    this.newGoalsSub.unsubscribe();
+    this.goalsSub.unsubscribe();
   }
 }

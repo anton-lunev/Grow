@@ -1,4 +1,4 @@
-<div class="goal-content">
+<div class="goal-content" *ngIf="goal">
   <div class="goal-content__actions actions">
     <!-- <a class="actions__item" routerLink="./edit"><svg icon="edit"></svg></a> -->
   </div>
@@ -15,6 +15,7 @@
   <h2>Action Plan</h2>
   <div class="goal-content__tasks tasks">
     <div *ngFor="let task of goal.tasks" class="tasks__item">
+      <!-- TODO make a separate component for checkbox -->
       <label class="task">
         <input class="task__checkbox" type="checkbox" />
         <svg height="18px" viewBox="0 0 18 18" width="18px">
