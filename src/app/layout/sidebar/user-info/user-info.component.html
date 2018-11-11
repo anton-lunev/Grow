@@ -1,5 +1,5 @@
 <ng-container *ngIf="authorized">
-  <div class="show-up">
+  <div class="show-up user-info">
     <!-- TODO Experience will be like this https://smartprogress.do/uploadImages/001216630.jpg -->
     <img alt="User" class="user-info__img" [attr.src]="user.photoURL" />
     <div class="user-info__name">{{ user.displayName }}</div>
@@ -8,12 +8,14 @@
 </ng-container>
 
 <ng-container *ngIf="userIsLoading">
-  <div class="user-info__img shimmer"></div>
-  <div class="user-info__name shimmer shimmer--text">Loading placeholder</div>
+  <div class="user-info">
+    <div class="user-info__img shimmer"></div>
+    <div class="user-info__name shimmer shimmer--text">Loading placeholder</div>
+  </div>
 </ng-container>
 
 <ng-container *ngIf="unauthorized">
-  <button class="show-up clean-button user-auth" (click)="auth()">
+  <button class="show-up clean-button user-auth user-info" (click)="auth()">
     <img alt="User" class="user-info__img" src="/assets/google.svg" />
     <span class="user-info__name">Sign in with Google</span>
   </button>

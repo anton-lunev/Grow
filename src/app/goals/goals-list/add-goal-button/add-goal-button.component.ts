@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'grow-add-goal-button',
@@ -10,6 +10,7 @@ export class AddGoalButtonComponent {
 
   isActive = false;
   goalTitle = '';
+  hidingTimeout: any;
 
   constructor() {}
 
@@ -21,9 +22,14 @@ export class AddGoalButtonComponent {
     this.isActive = false;
   }
 
+  hideInputWithDelay() {
+    this.hidingTimeout = setTimeout(() => this.hideInput(), 300);
+  }
+
   addNewGoal() {
-    this.hideInput();
+    clearTimeout(this.hidingTimeout);
     this.addGoal.emit(this.goalTitle);
+    this.hideInput();
     this.goalTitle = '';
   }
 }

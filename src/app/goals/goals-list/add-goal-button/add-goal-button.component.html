@@ -3,13 +3,13 @@
     <svg icon="add-goal"></svg>
   </button>
   <button *ngIf="isActive" class="clean-button add-goal__button"><svg icon="add-goal"></svg></button>
-  <!-- TODO add autofocus -->
   <input
     class="add-goal__input"
     type="text"
     placeholder="New Goal"
     name="goalTitle"
+    [autofocus]="isActive"
     [(ngModel)]="goalTitle"
-    (blur)="hideInput()"
+    (blur)="hideInputWithDelay()"
   />
 </form>

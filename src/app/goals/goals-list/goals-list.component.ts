@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Goal } from '../state/goal.model';
 import { GoalsQuery } from '../state/goals.query';
 import { GoalsService } from '../state/goals.service';
@@ -13,6 +13,7 @@ import { GoalsService } from '../state/goals.service';
 export class GoalsListComponent implements OnInit {
   goals$: Observable<Goal[]>;
   loading$: Observable<boolean>;
+  newGoals: Subscription;
 
   selectedGoal: string;
 
@@ -27,6 +28,7 @@ export class GoalsListComponent implements OnInit {
     this.goalsService.getGoals();
     this.goals$ = this.goalsQuery.selectAll();
     this.loading$ = this.goalsQuery.selectLoading();
+    this.newGoals = this.goalsService.getNewGoal().subscribe(goal => this.router.navigate(['/goals', goal.id]));
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {

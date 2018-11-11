@@ -5,11 +5,16 @@
 }
 
 .user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
   &__img {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    margin: 0 auto 23px;
+    margin-bottom: 23px;
     overflow: hidden;
     box-shadow: 0 0 0 6px var(--color-white), 0 0 0 7px var(--color-border);
 
@@ -20,7 +25,6 @@
   }
 
   &__name {
-    display: inline-block;
     margin-bottom: 10px;
   }
 
