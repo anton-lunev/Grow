@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { switchMap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+
 import { Goal } from '../state/goal/goal.model';
 import { GoalsQuery } from '../state/goal/goals.query';
 import { GoalsService } from '../state/goal/goals.service';
@@ -15,6 +18,7 @@ export class GoalsListComponent implements OnInit, OnDestroy {
   loading$: Observable<boolean>;
   newGoalsSub: Subscription;
   goalsSub: Subscription;
+  filter = new FormControl('');
 
   selectedGoal: string;
 
@@ -42,6 +46,19 @@ export class GoalsListComponent implements OnInit, OnDestroy {
       this.goals = goals;
       this.selectTheFirstGoal();
     });
+
+    this.filter.valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(200),
+        switchMap(value =>
+          this.goalsQuery.selectAll({
+            filterBy: (goal: Goal) =>
+              goal.description.toLowerCase().includes(value) || goal.title.toLowerCase().includes(value)
+          })
+        )
+      )
+      .subscribe(goals => (this.goals = goals));
   }
 
   selectTheFirstGoal() {
