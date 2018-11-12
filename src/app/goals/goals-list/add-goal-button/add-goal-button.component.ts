@@ -15,6 +15,7 @@ export class AddGoalButtonComponent {
   constructor() {}
 
   showInput() {
+    clearTimeout(this.hidingTimeout);
     this.isActive = true;
   }
 
