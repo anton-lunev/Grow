@@ -36,4 +36,10 @@ export class GoalsService {
       .set(goal)
       .then(() => this.newGoal$.next(goal));
   }
+
+  updateGoal(goal: Goal) {
+    this.getMyGoalsCollection()
+      .doc(goal.id)
+      .set(goal);
+  }
 }

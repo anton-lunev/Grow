@@ -13,7 +13,7 @@
     <div class="show-up">
       <grow-goal-item
         class="goals__item show-up"
-        *ngFor="let goal of goals"
+        *ngFor="let goal of goals; trackBy: trackByData"
         [goal]="goal"
         [selected]="isGoalSelected(goal.id)"
         routerLink="/goals/{{goal.id}}"

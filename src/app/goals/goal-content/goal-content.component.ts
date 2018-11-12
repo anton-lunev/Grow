@@ -29,12 +29,30 @@ export class GoalContentComponent implements OnInit {
     ]
   };*/
   goal: Goal;
+  originalGoal: Goal;
 
   constructor(private goalsService: GoalsService, private goalsQuery: GoalsQuery, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params
-      .pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId)))
-      .subscribe(goal => (this.goal = goal));
+    this.route.params.pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId))).subscribe(goal => {
+      this.originalGoal = goal;
+      this.goal = { ...goal };
+    });
+  }
+
+  updateTitle() {
+    if (this.goal.title !== this.originalGoal.title) {
+      this.updateGoal();
+    }
+  }
+
+  updateDescription() {
+    if (this.goal.description !== this.originalGoal.description) {
+      this.updateGoal();
+    }
+  }
+
+  private updateGoal() {
+    this.goalsService.updateGoal(this.goal);
   }
 }

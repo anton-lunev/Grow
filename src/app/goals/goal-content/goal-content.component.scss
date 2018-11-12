@@ -37,6 +37,30 @@
   }
 }
 
+.input {
+  outline: none;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 3px;
+    top: 0;
+    bottom: 0;
+    left: -10px;
+    background: var(--color-border-dark);
+    opacity: 0;
+    transition: opacity 0.2s 0.2s;
+  }
+
+  &:hover:before,
+  &:empty:before,
+  &:focus:before {
+    opacity: 1;
+  }
+}
+
 .actions {
   height: 0;
 

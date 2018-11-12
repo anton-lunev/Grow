@@ -70,4 +70,8 @@ export class GoalsListComponent implements OnInit, OnDestroy {
     this.newGoalsSub.unsubscribe();
     this.goalsSub.unsubscribe();
   }
+
+  trackByData(goal: Goal) {
+    return goal.title + goal.description + goal.image;
+  }
 }

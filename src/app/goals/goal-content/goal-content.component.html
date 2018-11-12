@@ -9,8 +9,23 @@
     src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
   />
 
-  <h1 class="goal-content__title">{{ goal.title }}</h1>
-  <p class="goal-content__description description">{{ goal.description }}</p>
+  <div
+    [(ngModel)]="goal.title"
+    class="goal-content__title input"
+    contenteditable="true"
+    name="goalTitle"
+    placeholder="Goal title"
+    (blur)="updateTitle()"
+  ></div>
+
+  <div
+    [(ngModel)]="goal.description"
+    class="goal-content__description description input"
+    contenteditable="true"
+    name="goalDescription"
+    placeholder="Goal description"
+    (blur)="updateDescription()"
+  ></div>
 
   <h2>Action Plan</h2>
   <div class="goal-content__tasks tasks">
