@@ -11,5 +11,6 @@
     [autofocus]="isActive"
     [(ngModel)]="goalTitle"
     (blur)="hideInputWithDelay()"
+    *ngIf="isActive"
   />
 </form>
