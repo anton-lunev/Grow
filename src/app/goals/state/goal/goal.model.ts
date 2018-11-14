@@ -1,4 +1,4 @@
-import { Timestamp } from '../../shared/utils/timestamp';
+import { Timestamp } from '../../../shared/utils/timestamp';
 
 export interface Goal {
   id: string;

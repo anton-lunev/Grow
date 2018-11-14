@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { Goal } from '../state/goal.model';
-import { GoalsQuery } from '../state/goals.query';
-import { GoalsService } from '../state/goals.service';
+import { Goal } from '../state/goal/goal.model';
+import { GoalsQuery } from '../state/goal/goals.query';
+import { GoalsService } from '../state/goal/goals.service';
 
 @Component({
   selector: 'grow-goals-list',

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Goal } from '../state/goal.model';
-import { GoalsQuery } from '../state/goals.query';
-import { GoalsService } from '../state/goals.service';
+import { Goal } from '../state/goal/goal.model';
+import { GoalsQuery } from '../state/goal/goals.query';
+import { GoalsService } from '../state/goal/goals.service';
+import { Todo } from '../state/todos/todo.model';
+import { TodosQuery } from '../state/todos/todos.query';
+import { TodosService } from '../state/todos/todos.service';
 
 @Component({
   selector: 'grow-goal-content',
@@ -30,14 +33,26 @@ export class GoalContentComponent implements OnInit {
   };*/
   goal: Goal;
   originalGoal: Goal;
+  todos: Todo[];
+  newTodoTitle: string;
 
-  constructor(private goalsService: GoalsService, private goalsQuery: GoalsQuery, private route: ActivatedRoute) {}
+  constructor(
+    private goalsService: GoalsService,
+    private goalsQuery: GoalsQuery,
+    private todosService: TodosService,
+    private todosQuery: TodosQuery,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.route.params.pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId))).subscribe(goal => {
       this.originalGoal = goal;
       this.goal = { ...goal };
     });
+    this.route.params.pipe(switchMap(params => this.todosService.getTodos(params.goalId))).subscribe();
+    this.route.params
+      .pipe(switchMap(params => this.todosQuery.selectGoalTodos(params.goalId)))
+      .subscribe(todos => (this.todos = todos.map(todo => ({ ...todo }))));
   }
 
   updateTitle() {
@@ -54,5 +69,18 @@ export class GoalContentComponent implements OnInit {
 
   private updateGoal() {
     this.goalsService.updateGoal(this.goal);
+  }
+
+  updateTodo(todo: Todo) {
+    this.todosService.updateTodo(this.goal.id, todo);
+  }
+
+  addTodo() {
+    this.todosService.addTodo(this.goal.id, this.newTodoTitle);
+    this.newTodoTitle = '';
+  }
+
+  trackByData(data: Todo) {
+    return data.done + data.id;
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Subject } from 'rxjs';
-import { AuthService } from '../../auth/state/auth.service';
+import { AuthService } from '../../../auth/state/auth.service';
 import { createGoal, Goal } from './goal.model';
 import { GoalsStore } from './goals.store';
 
@@ -17,6 +17,14 @@ export class GoalsService {
     );
   }
 
+  private getGoalsCollection(): AngularFirestoreCollection<Goal> {
+    return this.afs.collection('goals');
+  }
+
+  /**
+   * Subscribe here probably will be moved to component since we don't need these updates always.
+   * Also .valueChanges() will be removed, in order to reduce amount of traffic from firebase.
+   */
   getGoals() {
     this.getMyGoalsCollection()
       .valueChanges()
@@ -27,18 +35,18 @@ export class GoalsService {
     return this.newGoal$.asObservable();
   }
 
-  addGoal(title) {
+  addGoal(title: string) {
     const id = this.afs.createId();
     const user = this.authService.getCurrentUser().uid;
     const goal = createGoal({ id, user, title });
-    this.getMyGoalsCollection()
+    this.getGoalsCollection()
       .doc(id)
       .set(goal)
       .then(() => this.newGoal$.next(goal));
   }
 
   updateGoal(goal: Goal) {
-    this.getMyGoalsCollection()
+    this.getGoalsCollection()
       .doc(goal.id)
       .set(goal);
   }

@@ -11,6 +11,9 @@
       "schematics": {
         "@schematics/angular:component": {
           "styleext": "scss"
+        },
+        "akita-schematics:component": {
+          "styleext": "scss"
         }
       },
       "architect": {
