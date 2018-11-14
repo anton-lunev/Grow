@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { GoalContentComponent } from './goal-content/goal-content.component';
 import { GoalEditContentComponent } from './goal-edit-content/goal-edit-content.component';
@@ -13,7 +13,7 @@ import { GoalItemShimmerComponent } from './goals-list/goal-item-shimmer/goal-it
 import { AddGoalButtonComponent } from './goals-list/add-goal-button/add-goal-button.component';
 
 @NgModule({
-  imports: [CommonModule, SharedModule, FormsModule, GoalsRoutingModule],
+  imports: [CommonModule, SharedModule, FormsModule, GoalsRoutingModule, ReactiveFormsModule],
   declarations: [
     GoalsListComponent,
     GoalContentComponent,
