@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { FormControl } from '@angular/forms';
-import { switchMap, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { switchMap, distinctUntilChanged } from 'rxjs/operators';
 
 import { Goal } from '../state/goal/goal.model';
 import { GoalsQuery } from '../state/goal/goals.query';
@@ -46,15 +46,17 @@ export class GoalsListComponent implements OnInit, OnDestroy {
       this.goals = goals;
       this.selectTheFirstGoal();
     });
+    this.getFilteredGoals();
+  }
 
+  getFilteredGoals() {
     this.filter.valueChanges
       .pipe(
         distinctUntilChanged(),
-        debounceTime(200),
         switchMap(value =>
           this.goalsQuery.selectAll({
             filterBy: (goal: Goal) =>
-              goal.description.toLowerCase().includes(value) || goal.title.toLowerCase().includes(value)
+              [goal.description, goal.title].some((field: String) => field.toLowerCase().includes(value))
           })
         )
       )
