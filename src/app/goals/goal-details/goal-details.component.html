@@ -1,0 +1,41 @@
+<div class="goal-details" *ngIf="goal">
+  <div class="goal-details__actions actions">
+    <!-- <a class="actions__item" routerLink="./edit"><svg icon="edit"></svg></a> -->
+  </div>
+
+  <img
+    alt="Goal picture"
+    class="goal-details__image"
+    src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
+  />
+
+  <div
+    [(ngModel)]="goal.title"
+    class="goal-details__title input"
+    contenteditable="true"
+    name="goalTitle"
+    placeholder="Goal title"
+    (blur)="updateTitle()"
+  ></div>
+
+  <div
+    [(ngModel)]="goal.description"
+    class="goal-details__description description input"
+    contenteditable="true"
+    name="goalDescription"
+    placeholder="Goal description"
+    (blur)="updateDescription()"
+  ></div>
+
+  <h2>Action Plan</h2>
+
+  <grow-todo-list
+    class="goal-details__tasks"
+    [todos]="todos"
+    (add)="addTodo($event)"
+    (update)="updateTodo($event)"
+    (delete)="deleteTodo($event)"
+  ></grow-todo-list>
+
+  <div class="goal-details__notes"></div>
+</div>

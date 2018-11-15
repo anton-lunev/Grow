@@ -35,4 +35,10 @@ export class TodosService {
       .doc(todo.id)
       .set(createTodo(todo));
   }
+
+  deleteTodo(goalId: string, todo: Todo) {
+    this.getTodosCollection(goalId)
+      .doc(todo.id)
+      .delete();
+  }
 }

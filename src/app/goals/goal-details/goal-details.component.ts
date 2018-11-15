@@ -9,32 +9,14 @@ import { TodosQuery } from '../state/todos/todos.query';
 import { TodosService } from '../state/todos/todos.service';
 
 @Component({
-  selector: 'grow-goal-content',
-  templateUrl: './goal-content.component.html',
-  styleUrls: ['./goal-content.component.scss']
+  selector: 'grow-goal-details',
+  templateUrl: './goal-details.component.html',
+  styleUrls: ['./goal-details.component.scss']
 })
-export class GoalContentComponent implements OnInit {
-  /*goal = {
-    title: 'Finish MVP of this app',
-    description: `A minimum viable product has just those core features sufficient to deploy the product, and no more.
-      Developers typically deploy the product to a subset of possible customers—such as early adopters thought to be more forgiving,
-      more likely to give feedback, and able to grasp a product vision from an early prototype or marketing information.
-      This strategy targets avoiding building products that customers do not want and seeks to maximize information about the customer
-      per amount of money spent. "The minimum viable product is that version of a new product a team uses to collect the maximum amount
-      of validated learning about customers with the least effort."`,
-    image: '',
-    tasks: [
-      { title: 'Finish markup of main pages', done: false },
-      { title: 'Add authentication', done: false },
-      { title: 'Setup routing', done: false },
-      { title: 'Setup ngrx', done: false },
-      { title: 'Setup firebase', done: false }
-    ]
-  };*/
+export class GoalDetailsComponent implements OnInit {
   goal: Goal;
   originalGoal: Goal;
   todos: Todo[];
-  newTodoTitle: string;
 
   constructor(
     private goalsService: GoalsService,
@@ -71,16 +53,15 @@ export class GoalContentComponent implements OnInit {
     this.goalsService.updateGoal(this.goal);
   }
 
+  addTodo(title) {
+    this.todosService.addTodo(this.goal.id, title);
+  }
+
   updateTodo(todo: Todo) {
     this.todosService.updateTodo(this.goal.id, todo);
   }
 
-  addTodo() {
-    this.todosService.addTodo(this.goal.id, this.newTodoTitle);
-    this.newTodoTitle = '';
-  }
-
-  trackByData(data: Todo) {
-    return data.done + data.id;
+  deleteTodo(todo: Todo) {
+    this.todosService.deleteTodo(this.goal.id, todo);
   }
 }

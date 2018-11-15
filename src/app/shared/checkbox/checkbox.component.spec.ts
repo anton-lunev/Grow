@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GoalEditContentComponent } from './goal-edit-content.component';
+import { CheckboxComponent } from './checkbox.component';
 
-describe('GoalEditContentComponent', () => {
-  let component: GoalEditContentComponent;
-  let fixture: ComponentFixture<GoalEditContentComponent>;
+describe('CheckboxComponent', () => {
+  let component: CheckboxComponent;
+  let fixture: ComponentFixture<CheckboxComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [GoalEditContentComponent]
+      declarations: [CheckboxComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GoalEditContentComponent);
+    fixture = TestBed.createComponent(CheckboxComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

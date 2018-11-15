@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../auth/auth.guard';
-import { GoalContentComponent } from './goal-content/goal-content.component';
-import { GoalEditContentComponent } from './goal-edit-content/goal-edit-content.component';
+import { GoalDetailsComponent } from './goal-details/goal-details.component';
 import { GoalsComponent } from './goals.component';
 
 const routes: Routes = [
@@ -10,11 +9,7 @@ const routes: Routes = [
     path: 'goals',
     component: GoalsComponent,
     canActivate: [AuthGuard],
-    children: [
-      { path: 'add', component: GoalEditContentComponent },
-      { path: ':goalId', component: GoalContentComponent },
-      { path: ':goalId/edit', component: GoalEditContentComponent }
-    ]
+    children: [{ path: ':goalId', component: GoalDetailsComponent }]
   }
 ];
 
