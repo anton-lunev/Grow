@@ -9,6 +9,7 @@ import { Todo } from '../../state/todos/todo.model';
 })
 export class TodoListComponent implements OnInit {
   @Input() todos: Todo[];
+  @Input() sortedIds: string[];
   @Output() add = new EventEmitter<string>();
   @Output() update = new EventEmitter<Todo>();
   @Output() delete = new EventEmitter<Todo>();
@@ -17,7 +18,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {}
 
-  trackByData(data: Todo) {
-    return data.done + data.id;
+  getTodo(id) {
+    return this.todos.find(todo => todo.id === id);
   }
 }

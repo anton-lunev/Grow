@@ -1,8 +1,8 @@
 <grow-add-todo class="todo-list__add" (add)="add.emit($event)"></grow-add-todo>
 <grow-todo
-  *ngFor="let todo of todos; trackBy: trackByData"
+  *ngFor="let id of sortedIds"
   class="todo-list__item"
-  [todo]="todo"
+  [todo]="getTodo(id)"
   (update)="update.emit($event)"
   (delete)="delete.emit($event)"
 ></grow-todo>

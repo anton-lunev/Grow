@@ -6,6 +6,8 @@ export interface Goal {
   user: string;
   description: string;
   image: string;
+  progress: number;
+  todos: string[];
   created: Timestamp;
   modified: Timestamp;
 }
@@ -17,6 +19,8 @@ export function createGoal(data: Partial<Goal>): Goal {
     user: '',
     description: '',
     image: '',
+    progress: 0,
+    todos: [],
     created: Timestamp.now(),
     modified: Timestamp.now(),
     ...data
