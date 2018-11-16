@@ -27,12 +27,12 @@ export class GoalDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.route.params.pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId))).subscribe(goal => {
+    this.route.parent.params.pipe(switchMap(params => this.goalsQuery.selectEntity(params.goalId))).subscribe(goal => {
       this.originalGoal = goal;
       this.goal = { ...goal };
     });
-    this.route.params.pipe(switchMap(params => this.todosService.getTodos(params.goalId))).subscribe();
-    this.route.params
+    this.route.parent.params.pipe(switchMap(params => this.todosService.getTodos(params.goalId))).subscribe();
+    this.route.parent.params
       .pipe(switchMap(params => this.todosQuery.selectGoalTodos(params.goalId)))
       .subscribe(todos => (this.todos = todos.map(todo => ({ ...todo }))));
   }

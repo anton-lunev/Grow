@@ -5,7 +5,6 @@ export interface Todo {
   title: string;
   goalId: string;
   done: boolean;
-  index: number;
   created: Timestamp;
   modified: Timestamp;
 }
@@ -19,7 +18,6 @@ export function createTodo(data: Partial<Todo>): Todo {
     title: '',
     goalId: '',
     done: false,
-    index: 0,
     created: Timestamp.now(),
     modified: Timestamp.now(),
     ...data

@@ -6,10 +6,15 @@ import { GoalsComponent } from './goals.component';
 
 const routes: Routes = [
   {
-    path: 'goals',
+    path: '',
     component: GoalsComponent,
     canActivate: [AuthGuard],
-    children: [{ path: ':goalId', component: GoalDetailsComponent }]
+    children: [
+      {
+        path: ':goalId',
+        loadChildren: './goal-details/goal-details.module#GoalDetailsModule'
+      }
+    ]
   }
 ];
 
