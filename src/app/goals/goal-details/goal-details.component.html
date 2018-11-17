@@ -30,10 +30,8 @@
   <h2>Action Plan</h2>
 
   <grow-todo-list
-    *ngIf="todos && todos.length"
     class="goal-details__tasks"
     [todos]="todos"
-    [sortedIds]="goal.todos"
     (add)="addTodo($event)"
     (update)="updateTodo($event)"
     (delete)="deleteTodo($event)"

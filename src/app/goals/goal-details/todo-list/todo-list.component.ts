@@ -18,7 +18,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {}
 
-  getTodo(id) {
-    return this.todos.find(todo => todo.id === id);
+  trackByData(data: Todo) {
+    return data.done + data.id;
   }
 }

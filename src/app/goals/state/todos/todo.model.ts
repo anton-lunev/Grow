@@ -2,6 +2,7 @@ import { Timestamp } from '../../../shared/utils/timestamp';
 
 export interface Todo {
   id: string;
+  index: number;
   title: string;
   goalId: string;
   done: boolean;
@@ -15,6 +16,7 @@ export interface Todo {
 export function createTodo(data: Partial<Todo>): Todo {
   return {
     id: '',
+    index: 0,
     title: '',
     goalId: '',
     done: false,
