@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { firestore } from 'firebase/app';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Progress } from '../goal/goal.model';
 import { createTodo, Todo } from './todo.model';
 import { TodosQuery } from './todos.query';
 import { TodosStore } from './todos.store';
@@ -18,6 +20,12 @@ export class TodosService {
     return this.getGoalDocument(goalId).collection('todos');
   }
 
+  private getProgress(goalId): Progress {
+    const todos = this.todosQuery.getGoalTodos(goalId);
+    const done = todos.filter(todo => todo.done).length;
+    return { overall: todos.length, done };
+  }
+
   getTodos(goalId): Observable<Todo[]> {
     return this.getGoalDocument(goalId)
       .collection('todos', ref => ref.orderBy('index', 'desc'))
@@ -29,19 +37,25 @@ export class TodosService {
    * Adds new item to collection with index that equals collection length.
    */
   addTodo(goalId: string, title: string) {
+    const progress = this.getProgress(goalId);
     const id = this.afs.createId();
-    const todo = createTodo({ id, goalId, title, index: this.todosQuery.getGoalTodosCount(goalId) });
+    const todo = createTodo({ id, goalId, title, index: progress.overall });
+    progress.overall++;
 
     const batch = this.afs.firestore.batch();
     batch.set(this.getTodosCollection(goalId).doc(id).ref, todo);
-    // batch.update(this.getGoalDocument(goalId).ref, { todos: firestore.FieldValue.arrayUnion(id) });
+    this.updateGoalProgress(batch, goalId, progress);
     batch.commit();
   }
 
   updateTodo(goalId: string, todo: Todo) {
-    this.getTodosCollection(goalId)
-      .doc(todo.id)
-      .set(createTodo(todo));
+    const batch = this.afs.firestore.batch();
+    batch.set(this.getTodosCollection(goalId).doc(todo.id).ref, createTodo(todo));
+
+    const progress = this.getProgress(goalId);
+    todo.done ? progress.done++ : progress.done--;
+    this.updateGoalProgress(batch, goalId, progress);
+    batch.commit();
   }
 
   /**
@@ -62,8 +76,17 @@ export class TodosService {
       }
     });
 
-    // batch.update(this.getGoalDocument(goalId).ref, { todos: firestore.FieldValue.arrayRemove(todo.id) });
+    const progress = this.getProgress(goalId);
+    progress.overall--;
+    if (todo.done) {
+      progress.done--;
+    }
+    this.updateGoalProgress(batch, goalId, progress);
     batch.commit();
+  }
+
+  private updateGoalProgress(batch: firestore.WriteBatch, goalId: string, progress: Progress) {
+    batch.update(this.getGoalDocument(goalId).ref, { progress });
   }
 
   reorderTodos(todos: Todo[]) {}

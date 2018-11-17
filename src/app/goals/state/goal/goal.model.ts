@@ -1,12 +1,18 @@
 import { Timestamp } from '../../../shared/utils/timestamp';
 
+export interface Progress {
+  overall: number;
+  done: number;
+}
+
 export interface Goal {
   id: string;
   title: string;
   user: string;
   description: string;
   image: string;
-  progress: number;
+  private: boolean;
+  progress: Progress;
   created: Timestamp;
   modified: Timestamp;
 }
@@ -18,7 +24,8 @@ export function createGoal(data: Partial<Goal>): Goal {
     user: '',
     description: '',
     image: '',
-    progress: 0,
+    private: false,
+    progress: { overall: 0, done: 0 },
     created: Timestamp.now(),
     modified: Timestamp.now(),
     ...data

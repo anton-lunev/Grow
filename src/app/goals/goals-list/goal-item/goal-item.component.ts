@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { Goal } from '../../state/goal/goal.model';
 
 @Component({
   selector: 'grow-goal-item',
@@ -7,7 +8,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalItemComponent implements OnInit {
-  @Input() goal: { id: number; title: string; description: string; image: string };
+  @Input() goal: Goal;
   @Input() selected: boolean;
 
   constructor() {}

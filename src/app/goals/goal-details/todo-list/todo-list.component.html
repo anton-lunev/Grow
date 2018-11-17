@@ -1,6 +1,6 @@
 <grow-add-todo class="todo-list__add" (add)="add.emit($event)"></grow-add-todo>
 <grow-todo
-  *ngFor="let todo of todos; trackBy: trackByData"
+  *ngFor="let todo of todos"
   class="todo-list__item"
   [todo]="todo"
   (update)="update.emit($event)"
