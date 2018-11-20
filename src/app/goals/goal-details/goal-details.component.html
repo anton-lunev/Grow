@@ -3,11 +3,16 @@
     <!-- <a class="actions__item" routerLink="./edit"><svg icon="edit"></svg></a> -->
   </div>
 
-  <img
-    alt="Goal picture"
-    class="goal-details__image"
-    src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
-  />
+  <div class="goal-details__image-wrapper">
+    <img
+      alt="Goal picture"
+      class="goal-details__image"
+      src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/03/1488480428eloquent-js.jpg"
+    />
+    <form (ngSubmit)="uploadImage($event)">
+      <label> <span>Update image!</span> <input type="file" /> </label> <button type="submit">Upload</button>
+    </form>
+  </div>
 
   <div
     [(ngModel)]="goal.title"

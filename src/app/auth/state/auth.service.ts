@@ -25,8 +25,8 @@ export class AuthService {
   }
 
   googleLogin() {
-    this.socialSignIn(new auth.GoogleAuthProvider()).then(userCredentials =>
-      this.authStore.login(userCredentials.user)
+    this.socialSignIn(new auth.GoogleAuthProvider().addScope('https://www.googleapis.com/auth/drive')).then(
+      userCredentials => this.authStore.login(userCredentials.user)
     );
   }
 
