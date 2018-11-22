@@ -8,5 +8,7 @@
     <div class="goal__title">{{ goal.title }}</div>
     <div class="goal__description">{{ goal.description }}</div>
     <span *ngIf="goal.progress"><br />{{ goal.progress.done }} / {{ goal.progress.overall }}</span>
+    <button (click)="delete.emit(goal.id)" class="goal__delete-button">X</button>
+    <button (click)="switchDone.emit(goal)" class="goal__switch-done">{{ goal.done ? 'In Progress' : 'Done' }}</button>
   </div>
 </div>

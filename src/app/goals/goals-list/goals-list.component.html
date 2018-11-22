@@ -17,6 +17,8 @@
         [goal]="goal"
         [selected]="isGoalSelected(goal.id)"
         routerLink="/goals/{{goal.id}}"
+        (delete)="deleteGoal($event)"
+        (switchDone)="switchDone($event)"
       >
       </grow-goal-item>
     </div>

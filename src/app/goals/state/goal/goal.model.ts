@@ -15,6 +15,7 @@ export interface Goal {
   progress: Progress;
   created: Timestamp;
   modified: Timestamp;
+  done: Boolean;
 }
 
 export function createGoal(data: Partial<Goal>): Goal {
@@ -28,6 +29,7 @@ export function createGoal(data: Partial<Goal>): Goal {
     progress: { overall: 0, done: 0 },
     created: Timestamp.now(),
     modified: Timestamp.now(),
+    done: false,
     ...data
   };
 }

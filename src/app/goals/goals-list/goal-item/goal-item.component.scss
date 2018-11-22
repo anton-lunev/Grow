@@ -22,9 +22,12 @@
 
   &__content {
     padding: 15px;
+    position: relative;
   }
 
   &__title {
+    display: inline-block;
+    width: 160px;
     margin-bottom: 10px;
   }
 
@@ -40,5 +43,18 @@
 
   &--active &__description {
     color: rgba(255, 255, 255, 0.8);
+  }
+
+  &__delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  &__switch-done {
+    position: absolute;
+    top: 40px;
+    right: 10px;
   }
 }

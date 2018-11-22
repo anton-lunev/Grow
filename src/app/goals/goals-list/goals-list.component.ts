@@ -93,4 +93,12 @@ export class GoalsListComponent implements OnInit, OnDestroy {
   trackByData(goal: Goal) {
     return goal.title + goal.description + goal.image;
   }
+
+  deleteGoal(goalId: String) {
+    this.goalsService.deleteGoal(goalId);
+  }
+
+  switchDone(goal: Goal) {
+    this.goalsService.updateGoal({ ...goal, done: !goal.done });
+  }
 }

@@ -50,4 +50,11 @@ export class GoalsService {
       .doc(goal.id)
       .set(goal);
   }
+
+  deleteGoal(goalId) {
+    this.getGoalsCollection()
+      .doc(goalId)
+      .delete()
+      .then(() => console.log(`goal ${goalId} has been deleted`));
+  }
 }
